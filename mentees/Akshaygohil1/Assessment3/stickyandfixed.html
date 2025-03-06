@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Without Clear Both</title>
+  <style>
+    .container {
+      border: 1px solid black;
+      padding: 10px;
+    }
+    .box {
+      float: left;
+      width: 50%;
+      height: 100px;
+      background-color: lightblue;
+    }
+    .text {
+      background-color: lightgreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">Floated Left</div>
+    <div class="box">Floated Left</div>
+    <div class="text">
+      This text is not cleared and overlaps with the floated boxes.
+    </div>
+  </div>
+</body>
+</html>

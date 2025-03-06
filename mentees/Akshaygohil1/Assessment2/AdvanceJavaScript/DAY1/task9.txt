@@ -1,0 +1,88 @@
+Event Loop Basics: Stack, Queue, and Processing Asynchronous Tasks
+The Event Loop is a fundamental concept in JavaScript's concurrency model, enabling non-blocking, asynchronous execution.
+It allows JavaScript to perform tasks like handling user interactions, fetching data, or running timers, while maintaining a single-threaded nature.
+
+1. Core Components
+Call Stack:
+
+A data structure that tracks the current execution context.
+Functions are added (pushed) to the stack when called and removed (popped) once they finish execution.
+
+Task Queue (Callback Queue):
+
+Holds macro-tasks (e.g., setTimeout, setInterval, DOM events).
+Tasks in the queue are moved to the call stack when the stack is empty.
+
+Microtask Queue:
+
+Holds micro-tasks (e.g., Promises, MutationObserver callbacks).
+Microtasks have higher priority and are processed before tasks in the task queue.
+
+Event Loop:
+
+Continuously checks if the call stack is empty.
+If empty, it pushes tasks from the microtask queue first, then from the task queue, onto the stack for execution.
+
+
+-------------------------------------
+example 
+
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout callback");
+}, 1000);
+
+console.log("End");
+
+
+output : 
+Start
+End
+Timeout callback
+
+-------------------------------------
+example 2
+
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout callback");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("Promise callback");
+});
+
+console.log("End");
+ 
+
+output: 
+Start
+End
+Promise callback
+Timeout callback
+
+
+-----------------------
+example 3
+ Microtask Queue Priority
+
+setTimeout(() => {
+  console.log("Macro-task 1");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("Micro-task 1");
+}).then(() => {
+  console.log("Micro-task 2");
+});
+
+console.log("End");
+
+output : s
+
+End
+Micro-task 1
+Micro-task 2
+Macro-task 1

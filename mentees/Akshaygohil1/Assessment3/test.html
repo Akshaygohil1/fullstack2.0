@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible Tooltip</title>
+  <style>
+    /* Basic Tooltip Styles */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip-content {
+      visibility: hidden;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 5px 10px;
+      border-radius: 5px;
+      position: absolute;
+      z-index: 10;
+      bottom: 125%; /* Position above the element */
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      white-space: nowrap;
+    }
+
+    /* Arrow */
+    .tooltip-content::after {
+      content: '';
+      position: absolute;
+      top: 100%; /* Below the tooltip */
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: #333 transparent transparent transparent;
+    }
+
+    /* Show the tooltip on hover or focus */
+    .tooltip:hover .tooltip-content,
+    .tooltip:focus-within .tooltip-content {
+      visibility: visible;
+    }
+  </style>
+</head>
+<body>
+  <!-- Tooltip Component -->
+  <div class="tooltip">
+    <button aria-describedby="tooltip-1">Hover or focus me</button>
+    <div class="tooltip-content" role="tooltip" id="tooltip-1">
+      This is an accessible tooltip message.
+    </div>
+  </div>
+</body>
+</html>
