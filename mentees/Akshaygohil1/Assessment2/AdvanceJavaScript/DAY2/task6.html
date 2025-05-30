@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="myBtn">Click Me</button>
+    <script src="">
+        const btn = document.getElementById("myBtn");
+
+        btn.addEventListener("click", function () {
+            alert("Button was clicked!");
+        });
+
+        btn.addEventListener("mouseover", () => {
+            console.log("Mouse is over the button!");
+        });
+
+    </script>
+</body>
+
+</html>
+<!--    // basic system to add event listeners to elements
+        element.addEventListener("event", callback);
+
+event Type	What it does
+"click"	User clicks
+"dblclick"	Double click
+"mouseover"	Mouse hovers over element
+"keydown"	Key is pressed
+"input"	User types in input field
+"submit"	Form is submitted
+ -->
